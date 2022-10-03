@@ -6,7 +6,6 @@ import com.waterhorse.staybooking.model.*;
 import com.waterhorse.staybooking.repository.LocationRepository;
 import com.waterhorse.staybooking.repository.ReservationRepository;
 import com.waterhorse.staybooking.repository.StayRepository;
-import com.waterhorse.staybooking.repository.StayReservationDateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -26,7 +25,6 @@ public class StayService {
     private ReservationRepository reservationRepository;
     private ImageStorageService imageStorageService;
     private GeoCodingService geoCodingService;
-    private StayReservationDateRepository stayReservationDateRepository;
 
     @Autowired
     public StayService(
@@ -34,15 +32,13 @@ public class StayService {
             LocationRepository locationRepository,
             ReservationRepository reservationRepository,
             ImageStorageService imageStorageService,
-            GeoCodingService geoCodingService,
-            StayReservationDateRepository stayReservationDateRepository
+            GeoCodingService geoCodingService
     ) {
         this.stayRepository = stayRepository;
         this.locationRepository = locationRepository;
         this.reservationRepository = reservationRepository;
         this.imageStorageService = imageStorageService;
         this.geoCodingService = geoCodingService;
-        this.stayReservationDateRepository = stayReservationDateRepository;
     }
 
     public List<Stay> listByUser(String username) {
